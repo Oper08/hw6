@@ -3,18 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .user-block {
-            background-color: #1a1a4b;
-            color: #fdfcfc;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
+    <title>...</title>
 </head>
 <body>
-    <div id="user-container"></div>
-    <script src="Kimbat.js"></script>
+    <h1>ww</h1>
+    <textarea id="note"  placeholder="JAZ"></textarea>
+    <br>
+    <button id="save">Сақтау</button>
+    <button id="clear">Тазалау</button>
+    <p id="message"></p>
+
+    <script>
+        window.onload = function () {
+            const savedNote = localStorage.getItem('userNote');
+            if (savedNote) {
+                document.getElementById('note').value = savedNote;
+            }
+        };
+
+        document.getElementById('save').addEventListener('click', function () {
+            const note = document.getElementById('note').value;
+            localStorage.setItem('userNote', note); // 
+            document.getElementById('message').textContent = " save text";
+        });
+
+        document.getElementById('clear').addEventListener('click', function () {
+            localStorage.removeItem('userNote'); 
+            document.getElementById('note').value = ""; // 
+            document.getElementById('message').textContent = "clear text";
+        });
+    </script>
 </body>
 </html>
